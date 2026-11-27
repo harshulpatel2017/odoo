@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Template 0: Meta Built-in Hello World (Pre-approved in Meta Developer Console) -->
+        <record id="wa_template_meta_hello_world" model="whatsapp.template">
+            <field name="name">Meta Hello World (Live First-Contact Test)</field>
+            <field name="code">hello_world</field>
+            <field name="category">utility</field>
+            <field name="language">en_US</field>
+            <field name="model_id" search="[('model', '=', 'res.partner')]"/>
+            <field name="header_type">none</field>
+            <field name="body">Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta.</field>
+            <field name="active">True</field>
+        </record>
+
+        <!-- Template 1: Sales Order Confirmation -->
+        <record id="wa_template_sale_order_confirmation" model="whatsapp.template">
+            <field name="name">Sales Order Confirmation</field>
+            <field name="code">sales_order_confirmation</field>
+            <field name="category">utility</field>
+            <field name="language">en_US</field>
+            <field name="model_id" search="[('model', '=', 'sale.order')]"/>
+            <field name="header_type">document</field>
+            <field name="body">Hello {{partner_name}},
+
+Thank you for your order! Your Sales Order *{{order_name}}* amounting to *{{amount_total}}* has been confirmed successfully.
+
+Our dispatch team is preparing your shipment. If you have any questions, feel free to reply directly to this message.
+
+Best Regards,
+*{{company_name}}*</field>
+            <field name="active">True</field>
+        </record>
+
+        <!-- Template 2: Invoice Dispatch with PDF -->
+        <record id="wa_template_invoice_dispatch" model="whatsapp.template">
+            <field name="name">Customer Invoice &amp; Payment Details</field>
+            <field name="code">invoice_dispatch</field>
+            <field name="category">utility</field>
+            <field name="language">en_US</field>
+            <field name="model_id" search="[('model', '=', 'account.move')]"/>
+            <field name="header_type">document</field>
+            <field name="body">Dear {{partner_name}},
+
+Your invoice *{{invoice_name}}* for the amount of *{{amount_total}}* has been generated.
+
+Due Date: *{{due_date}}*
+Payment Status: *{{payment_state}}*
+
+Please find your official PDF tax invoice attached.
+
+Warm regards,
+*{{company_name}}* Accounts Team</field>
+            <field name="active">True</field>
+        </record>
+
+        <!-- Template 3: Delivery Dispatch -->
+        <record id="wa_template_delivery_dispatch" model="whatsapp.template">
+            <field name="name">Delivery Order Dispatch</field>
+            <field name="code">delivery_dispatch</field>
+            <field name="category">utility</field>
+            <field name="language">en_US</field>
+            <field name="model_id" search="[('model', '=', 'stock.picking')]"/>
+            <field name="header_type">text</field>
+            <field name="body">Hello {{partner_name}},
+
+Great news! Your delivery *{{picking_name}}* for order *{{origin}}* is out for dispatch.
+
+Items Shipped: *{{item_count}} package(s)*
+Scheduled Date: *{{scheduled_date}}*
+
+Thank you for choosing *{{company_name}}*!</field>
+            <field name="active">True</field>
+        </record>
+
+        <!-- Template 4: Overdue Payment Reminder -->
+        <record id="wa_template_payment_reminder" model="whatsapp.template">
+            <field name="name">Friendly Payment Reminder</field>
+            <field name="code">payment_reminder</field>
+            <field name="category">utility</field>
+            <field name="language">en_US</field>
+            <field name="model_id" search="[('model', '=', 'account.move')]"/>
+            <field name="header_type">text</field>
+            <field name="body">Dear {{partner_name}},
+
+This is a gentle reminder regarding invoice *{{invoice_name}}* for *{{amount_residual}}*, which was due on *{{due_date}}*.
+
+If you have already processed this payment, kindly disregard this alert. Otherwise, please arrange the settlement at your earliest convenience.
+
+Best regards,
+*{{company_name}}*</field>
+            <field name="active">True</field>
+        </record>
+    </data>
+</odoo>

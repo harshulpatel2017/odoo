@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Template Tree View -->
+    <record id="view_whatsapp_template_tree" model="ir.ui.view">
+        <field name="name">whatsapp.template.tree</field>
+        <field name="model">whatsapp.template</field>
+        <field name="arch" type="xml">
+            <list string="WhatsApp Templates" sample="1">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="category" widget="badge" decoration-info="category == 'utility'"
+                       decoration-primary="category == 'marketing'" decoration-warning="category == 'authentication'"/>
+                <field name="model_id"/>
+                <field name="language"/>
+                <field name="header_type"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Template Form View -->
+    <record id="view_whatsapp_template_form" model="ir.ui.view">
+        <field name="name">whatsapp.template.form</field>
+        <field name="model">whatsapp.template</field>
+        <field name="arch" type="xml">
+            <form string="WhatsApp Template">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" placeholder="e.g. Sales Order Confirmation Alert"/></h1>
+                    </div>
+                    <group>
+                        <group name="meta_config" string="Meta Cloud Configuration">
+                            <field name="code" placeholder="sales_order_confirmation"/>
+                            <field name="category"/>
+                            <field name="language"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group name="model_config" string="Document Mapping">
+                            <field name="model_id" options="{'no_create': True}"/>
+                            <field name="model_name" invisible="1"/>
+                            <field name="header_type"/>
+                            <field name="header_text" invisible="header_type != 'text'"/>
+                            <field name="report_id" invisible="header_type != 'document'"
+                                   placeholder="Leave empty for auto-detected invoice/order PDF"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Template Body Content" name="body_content">
+                            <field name="body" placeholder="Write message with placeholders like {{partner_name}}, {{amount_total}}, {{order_name}}..."
+                                   widget="text" nolabel="1"/>
+                            <div class="alert alert-info mt-2" role="alert">
+                                <strong>Supported Dynamic Placeholders:</strong><br/>
+                                <code>{{partner_name}}</code>, <code>{{order_name}}</code>, <code>{{invoice_name}}</code>, <code>{{amount_total}}</code>, <code>{{amount_residual}}</code>, <code>{{due_date}}</code>, <code>{{scheduled_date}}</code>, <code>{{picking_name}}</code>, <code>{{company_name}}</code>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Template Search View -->
+    <record id="view_whatsapp_template_search" model="ir.ui.view">
+        <field name="name">whatsapp.template.search</field>
+        <field name="model">whatsapp.template</field>
+        <field name="arch" type="xml">
+            <search string="Search WhatsApp Templates">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="model_id"/>
+                <filter string="Utility" name="category_utility" domain="[('category', '=', 'utility')]"/>
+                <filter string="Marketing" name="category_marketing" domain="[('category', '=', 'marketing')]"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <group>
+                    <filter string="Target Model" name="group_model" context="{'group_by': 'model_id'}"/>
+                    <filter string="Category" name="group_category" context="{'group_by': 'category'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Template Action -->
+    <record id="action_whatsapp_template" model="ir.actions.act_window">
+        <field name="name">WhatsApp Message Templates</field>
+        <field name="res_model">whatsapp.template</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Meta WhatsApp message template!
+            </p>
+            <p>
+                Configure pre-approved Meta templates for Sales Orders, Invoices, Deliveries, and Payment Reminders.
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit_whatsapp" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.whatsapp</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[contains(@class, 'w-md-50') and field[@name='phone']]" position="after">
+                <div class="d-flex align-items-baseline w-md-50 gap-2">
+                    <i class="fa fa-fw me-1 fa-whatsapp text-success" title="WhatsApp"/>
+                    <field name="whatsapp_number" class="w-100" placeholder="WhatsApp e.g. +919876543210"/>
+                    <button name="action_open_whatsapp_chat" type="object"
+                            string="Chat" icon="fa-external-link"
+                            class="btn-link text-success text-nowrap p-0"
+                            invisible="not whatsapp_number"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

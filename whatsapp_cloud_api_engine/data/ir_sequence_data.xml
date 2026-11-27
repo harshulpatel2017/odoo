@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- WhatsApp Message Log Sequence -->
+        <record id="seq_whatsapp_message_log" model="ir.sequence">
+            <field name="name">WhatsApp Message Reference</field>
+            <field name="code">whatsapp.message.log</field>
+            <field name="prefix">WA/%(range_year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Enable Sandbox Mode by default on initial install (can be persisted OFF later) -->
+        <record id="icp_whatsapp_sandbox_mode" model="ir.config_parameter">
+            <field name="key">whatsapp_cloud_api_engine.sandbox_mode</field>
+            <field name="value">True</field>
+        </record>
+    </data>
+</odoo>

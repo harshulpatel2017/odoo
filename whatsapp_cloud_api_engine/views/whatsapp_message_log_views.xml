@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Message Log List View -->
+    <record id="view_whatsapp_message_log_tree" model="ir.ui.view">
+        <field name="name">whatsapp.message.log.list</field>
+        <field name="model">whatsapp.message.log</field>
+        <field name="arch" type="xml">
+            <list string="WhatsApp Message Logs" sample="1" decoration-danger="state == 'failed'"
+                  decoration-success="state in ('delivered', 'read')" decoration-info="state == 'sent'">
+                <field name="name"/>
+                <field name="create_date" string="Date" widget="date"/>
+                <field name="partner_id"/>
+                <field name="phone"/>
+                <field name="direction" widget="badge" decoration-info="direction == 'outbound'"
+                       decoration-warning="direction == 'inbound'"/>
+                <field name="res_name" string="Document"/>
+                <field name="template_id"/>
+                <field name="is_sandbox" string="Sandbox" optional="show"/>
+                <field name="state" widget="badge"
+                       decoration-muted="state == 'draft'"
+                       decoration-info="state in ('queued', 'sent')"
+                       decoration-success="state in ('delivered', 'read')"
+                       decoration-danger="state == 'failed'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Message Log Form View -->
+    <record id="view_whatsapp_message_log_form" model="ir.ui.view">
+        <field name="name">whatsapp.message.log.form</field>
+        <field name="model">whatsapp.message.log</field>
+        <field name="arch" type="xml">
+            <form string="WhatsApp Message Audit Log">
+                <header>
+                    <button name="action_send" string="Send Message" type="object"
+                            class="oe_highlight" invisible="state not in ('draft', 'failed')"/>
+                    <button name="action_retry" string="Retry Dispatch" type="object"
+                            class="btn-warning" invisible="state != 'failed'"/>
+
+                    <!-- Sandbox Demo Simulation Buttons -->
+                    <button name="action_simulate_delivered" string="Simulate Delivered" type="object"
+                            class="btn-outline-primary" invisible="state != 'sent'"/>
+                    <button name="action_simulate_read" string="Simulate Read (Blue-tick)" type="object"
+                            class="btn-outline-success" invisible="state != 'delivered'"/>
+
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,sent,delivered,read"/>
+                </header>
+                <sheet>
+                    <field name="is_sandbox" invisible="1"/>
+                    <widget name="web_ribbon" title="Sandbox Demo" bg_color="text-bg-warning"
+                            invisible="not is_sandbox"/>
+                    <widget name="web_ribbon" title="Meta Live" bg_color="text-bg-success"
+                            invisible="is_sandbox or state == 'failed'"/>
+                    <widget name="web_ribbon" title="Failed" bg_color="text-bg-danger"
+                            invisible="state != 'failed'"/>
+
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <group name="recipient_details" string="Recipient Information">
+                            <field name="partner_id"/>
+                            <field name="phone"/>
+                            <field name="direction"/>
+                            <field name="message_type"/>
+                            <field name="sent_date"/>
+                        </group>
+                        <group name="meta_metadata" string="Meta API Metadata">
+                            <field name="waba_message_id" readonly="1"/>
+                            <field name="template_id"/>
+                            <field name="use_meta_template" invisible="not template_id"/>
+                            <field name="res_model" invisible="1"/>
+                            <field name="res_id" invisible="1"/>
+                            <field name="res_name" string="Origin Record"/>
+                            <field name="retry_count" invisible="retry_count == 0"/>
+                        </group>
+                    </group>
+
+                    <div class="alert alert-danger w-100" role="alert" invisible="not error_message">
+                        <strong>Dispatch Error:</strong> <field name="error_message" readonly="1"/>
+                    </div>
+
+                    <notebook>
+                        <page string="Message Text Content" name="content">
+                            <field name="body" readonly="state != 'draft'" placeholder="Message text content..."/>
+                        </page>
+                        <page string="Attachments" name="attachments">
+                            <field name="attachment_ids" widget="many2many_binary"/>
+                        </page>
+                        <page string="JSON Request Payload" name="request_payload">
+                            <field name="payload" widget="text" readonly="1"
+                                   placeholder="Raw JSON sent to Meta Graph API..."/>
+                        </page>
+                        <page string="JSON Meta Response" name="response_payload">
+                            <field name="response" widget="text" readonly="1"
+                                   placeholder="Raw JSON response from Meta servers..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Message Log Search View -->
+    <record id="view_whatsapp_message_log_search" model="ir.ui.view">
+        <field name="name">whatsapp.message.log.search</field>
+        <field name="model">whatsapp.message.log</field>
+        <field name="arch" type="xml">
+            <search string="Search WhatsApp Message Logs">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="phone"/>
+                <field name="waba_message_id"/>
+                <filter string="Sent" name="state_sent" domain="[('state', '=', 'sent')]"/>
+                <filter string="Delivered" name="state_delivered" domain="[('state', '=', 'delivered')]"/>
+                <filter string="Read (Blue-tick)" name="state_read" domain="[('state', '=', 'read')]"/>
+                <filter string="Failed" name="state_failed" domain="[('state', '=', 'failed')]"/>
+                <separator/>
+                <filter string="Sandbox Simulated" name="filter_sandbox" domain="[('is_sandbox', '=', True)]"/>
+                <filter string="Live Meta" name="filter_live" domain="[('is_sandbox', '=', False)]"/>
+                <group>
+                    <filter string="Status" name="group_status" context="{'group_by': 'state'}"/>
+                    <filter string="Contact" name="group_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Date" name="group_date" context="{'group_by': 'create_date:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Message Log Action -->
+    <record id="action_whatsapp_message_log" model="ir.actions.act_window">
+        <field name="name">WhatsApp Audit Logs</field>
+        <field name="res_model">whatsapp.message.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No WhatsApp messages logged yet.
+            </p>
+            <p>
+                Send messages from Sales Orders, Invoices, Deliveries or Contacts to inspect live delivery traces.
+            </p>
+        </field>
+    </record>
+</odoo>

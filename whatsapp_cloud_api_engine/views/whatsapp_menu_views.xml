@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Main Application Menu -->
+    <menuitem id="menu_whatsapp_root"
+              name="WhatsApp Engine"
+              web_icon="whatsapp_cloud_api_engine,static/description/icon.png"
+              sequence="45"/>
+
+    <!-- Submenus -->
+    <menuitem id="menu_whatsapp_messages"
+              name="Audit Logs"
+              parent="menu_whatsapp_root"
+              action="action_whatsapp_message_log"
+              sequence="10"/>
+
+    <menuitem id="menu_whatsapp_templates"
+              name="Message Templates"
+              parent="menu_whatsapp_root"
+              action="action_whatsapp_template"
+              sequence="20"/>
+
+    <menuitem id="menu_whatsapp_configuration"
+              name="Configuration"
+              parent="menu_whatsapp_root"
+              sequence="30"/>
+
+    <menuitem id="menu_whatsapp_settings"
+              name="Settings"
+              parent="menu_whatsapp_configuration"
+              action="action_whatsapp_config_settings"
+              sequence="10"/>
+</odoo>

@@ -1,0 +1,225 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12 text-center">
+            <div style="margin-bottom: 18px;">
+                <span class="badge text-bg-success" style="font-size: 13px; padding: 6px 14px; border-radius: 20px; margin: 3px;">Odoo 19 Community &amp; Enterprise</span>
+                <span class="badge text-bg-primary" style="font-size: 13px; padding: 6px 14px; border-radius: 20px; margin: 3px;">Official Meta Cloud API v19+ / v23</span>
+                <span class="badge text-bg-warning" style="font-size: 13px; padding: 6px 14px; border-radius: 20px; margin: 3px;">Built-in Sandbox Simulator</span>
+            </div>
+            <h1 class="oe_slogan" style="color: #128C7E; font-weight: 700;">WhatsApp Cloud API &amp; Automated Messaging Engine</h1>
+            <h3 class="oe_slogan" style="color: #475569; max-width: 900px; margin: 0 auto 24px auto;">
+                Direct Meta Cloud API Integration for Odoo 19 — Send Real-Time Sales Confirmations, QWeb Invoice PDFs, Delivery Alerts &amp; Payment Reminders Directly to Customer WhatsApp Without Paid Third-Party Gateways.
+            </h3>
+            <div class="oe_demo oe_picture oe_screenshot" style="max-width: 820px; margin: 0 auto; border: none; box-shadow: none;">
+                <img src="banner.png" alt="WhatsApp Cloud API Engine for Odoo 19" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.12);"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark" style="padding: 24px 0; border-radius: 8px;">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan" style="color: #0f172a; font-weight: 700;">Why Choose This Module? (Key Highlights)</h2>
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-md-4 mb-3">
+                    <div class="p-3 h-100" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.04);">
+                        <h4 style="color: #128C7E; font-weight: 700;">Zero Third-Party Fees</h4>
+                        <p style="color: #475569; margin-bottom: 0;">Connects directly to <strong>Meta's official WhatsApp Cloud API</strong>. No recurring Twilio, Wati, or IAP credit subscriptions required — works out of the box on both <strong>Odoo Community &amp; Enterprise</strong>.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="p-3 h-100" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.04);">
+                        <h4 style="color: #128C7E; font-weight: 700;">Sandbox Simulator Mode</h4>
+                        <p style="color: #475569; margin-bottom: 0;">Includes a full <strong>local sandbox engine</strong> for instant testing and client demonstrations without needing Meta credentials. Generates realistic JSON request/response traces and delivery states.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="p-3 h-100" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.04);">
+                        <h4 style="color: #128C7E; font-weight: 700;">Auto PDF Upload &amp; Crons</h4>
+                        <p style="color: #475569; margin-bottom: 0;">Automatically renders Odoo <strong>QWeb PDFs</strong> (Invoices, Sales Orders, Delivery Slips), uploads media to Meta Graph API, and runs daily overdue payment reminder cron jobs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Step 1 -->
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan" style="color: #128C7E; font-weight: 700;">Step 1: Meta Cloud API Configuration &amp; Workflow Triggers</h2>
+            <h3 class="oe_slogan" style="color: #475569;">
+                Navigate to <b>Settings &rarr; WhatsApp Engine</b> to switch seamlessly between <b>Sandbox Simulator Mode</b> and <b>Live Meta Cloud API</b>. Test credentials instantly with one click and toggle automated dispatch on Order Confirmation, Invoice Posting, or Delivery Validation.
+            </h3>
+            <ul>
+                <li><strong>Dual Mode Switch:</strong> Enable <em>Sandbox Simulator Mode</em> for offline demos, or toggle OFF for real-world customer messaging via Meta Graph API (v19.0 / v23.0).</li>
+                <li><strong>One-Click Connection Check:</strong> Validates Phone Number ID, WABA Account ID, and Access Token directly against Meta servers.</li>
+                <li><strong>Automated Workflow Triggers:</strong> Independently toggle auto-send for <em>Sales Order Confirmation</em>, <em>Customer Invoice Post</em>, and <em>Delivery Transfer Done</em>.</li>
+            </ul>
+            <div class="row justify-content-center p-3 w-100 m-0" style="border: 1px solid #d8d6d6; border-radius: 8px; background: #fff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                <img src="01_settings_config.png" alt="Odoo 19 WhatsApp Engine Settings and Workflow Automation Triggers" style="max-width: 100%; border-radius: 4px;"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Step 2 -->
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan" style="color: #128C7E; font-weight: 700;">Step 2: Odoo 19 E.164 Phone Sanitization &amp; Direct Chat</h2>
+            <h3 class="oe_slogan" style="color: #475569;">
+                Fully adapted for Odoo 19's unified <code>phone</code> architecture. Customer numbers are automatically formatted into clean E.164 international WhatsApp numbers using country codes, with a one-click <b>Chat</b> launcher right on the Contact card.
+            </h3>
+            <ul>
+                <li><strong>Automatic Country Code Detection:</strong> Converts local numbers (e.g., <code>0123456789</code>) into clean WhatsApp identifiers (<code>+910123456789</code>).</li>
+                <li><strong>Direct Web Chat Shortcut:</strong> Click the green <b>Chat</b> button beside any partner's WhatsApp number to launch instant WhatsApp messaging.</li>
+            </ul>
+            <div class="row justify-content-center p-3 w-100 m-0" style="border: 1px solid #d8d6d6; border-radius: 8px; background: #fff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                <img src="02_partner_whatsapp.png" alt="Contact Form showing sanitized WhatsApp Number and Direct Chat button" style="max-width: 100%; border-radius: 4px;"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Step 3 -->
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan" style="color: #128C7E; font-weight: 700;">Step 3: Interactive Composer Wizard &amp; Live Chat Preview</h2>
+            <h3 class="oe_slogan" style="color: #475569;">
+                Click the green <b>Send via WhatsApp</b> button on any <b>Sales Order</b>, <b>Customer Invoice</b>, or <b>Delivery Picking</b>. Dynamic placeholders and QWeb PDF reports auto-populate alongside a real-time WhatsApp chat bubble preview.
+            </h3>
+            <ul>
+                <li><strong>Live Customer View Preview:</strong> Preview the exact formatting, WhatsApp bold tags, PDF attachment pill, and delivery ticks before hitting send.</li>
+                <li><strong>Automatic QWeb PDF Attachment:</strong> Sales quotations, tax invoices, and delivery slips are automatically rendered and uploaded via Meta's Media API.</li>
+                <li><strong>Flexible Dispatch:</strong> Send rich custom formatted text &amp; PDFs during 24-hour customer sessions, or check <em>Send as Meta Template Payload</em> for template-initiated outreach.</li>
+            </ul>
+            <div class="row justify-content-center p-3 w-100 m-0" style="border: 1px solid #d8d6d6; border-radius: 8px; background: #fff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                <img src="03_sale_order_composer.png" alt="Interactive WhatsApp Composer Wizard with Live Chat Preview and PDF attachment" style="max-width: 100%; border-radius: 4px;"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Step 4 -->
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan" style="color: #128C7E; font-weight: 700;">Step 4: Real-Time Chatter Audit Badges on Business Records</h2>
+            <h3 class="oe_slogan" style="color: #475569;">
+                Every outbound WhatsApp alert (whether sent manually or triggered automatically) logs an audit note inside the origin document's Chatter with a color-coded status badge, reference number, and official Meta <code>wamid</code> ID.
+            </h3>
+            <ul>
+                <li><strong>Clear Visual Indicators:</strong> Distinguishes <code>[WhatsApp Live]</code> dispatches from <code>[WhatsApp Sandbox]</code> test runs.</li>
+                <li><strong>Full Traceability:</strong> Displays the rendered message body, unique log reference (<code>WA/YYYY/XXXXX</code>), and Meta verification ID right inside Odoo's Chatter.</li>
+            </ul>
+            <div class="row justify-content-center p-3 w-100 m-0" style="border: 1px solid #d8d6d6; border-radius: 8px; background: #fff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                <img src="04_chatter_audit_badge.png" alt="Sales Order Chatter showing WhatsApp Live audit badge and Meta ID" style="max-width: 100%; border-radius: 4px;"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Step 5 -->
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan" style="color: #128C7E; font-weight: 700;">Step 5: Dynamic Template Engine &amp; Automated Payment Reminders</h2>
+            <h3 class="oe_slogan" style="color: #475569;">
+                Pre-loaded with ready-to-use transactional templates under <b>WhatsApp Engine &rarr; Message Templates</b>, supporting multi-language mappings, custom QWeb PDF reports, and dynamic placeholders.
+            </h3>
+            <ul>
+                <li><strong>Pre-Configured Workflows:</strong> Includes templates for <em>Sales Order Confirmation</em>, <em>Customer Invoice &amp; Payment Details</em>, <em>Delivery Order Dispatch</em>, <em>Friendly Payment Reminder</em>, and <em>Meta Hello World</em>.</li>
+                <li><strong>Dynamic Variables:</strong> Supports <code>{{partner_name}}</code>, <code>{{order_name}}</code>, <code>{{invoice_name}}</code>, <code>{{amount_total}}</code>, <code>{{amount_residual}}</code>, <code>{{due_date}}</code>, <code>{{scheduled_date}}</code>, <code>{{payment_state}}</code>, and <code>{{company_name}}</code>.</li>
+                <li><strong>Scheduled Overdue Alerts:</strong> Daily automated cron scans unpaid overdue invoices and schedules reminder messages safely once per day.</li>
+            </ul>
+            <div class="row justify-content-center p-3 w-100 m-0" style="border: 1px solid #d8d6d6; border-radius: 8px; background: #fff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                <img src="05_message_templates.png" alt="WhatsApp Message Templates List View in Odoo 19" style="max-width: 100%; border-radius: 4px;"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Step 6 -->
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan" style="color: #128C7E; font-weight: 700;">Step 6: Central Audit Logs, Webhook Events &amp; Raw JSON Inspector</h2>
+            <h3 class="oe_slogan" style="color: #475569;">
+                Track every message lifecycle stage (<b>Draft &rarr; Sent &rarr; Delivered &rarr; Read &rarr; Failed</b>) under <b>WhatsApp Engine &rarr; Audit Logs</b>. Inspect exact JSON payloads sent to Meta, uploaded PDF Media IDs, raw server responses, and webhook updates.
+            </h3>
+            <ul>
+                <li><strong>Complete JSON Transparency:</strong> Dedicated tabs for <em>Message Text Content</em>, <em>Attachments</em>, <em>JSON Request Payload</em>, and <em>JSON Meta Response</em>.</li>
+                <li><strong>Live Webhook Listener:</strong> Built-in <code>/whatsapp/webhook</code> controller verifies Meta signatures and processes live delivery/read receipts and customer replies.</li>
+                <li><strong>Auto-Retry &amp; Demo Simulation:</strong> Failed messages automatically retry via background cron (up to 3 times), plus interactive <em>Simulate Delivered</em> &amp; <em>Simulate Read</em> buttons for live demos.</li>
+            </ul>
+            <div class="row justify-content-center p-3 w-100 m-0" style="border: 1px solid #d8d6d6; border-radius: 8px; background: #fff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);">
+                <img src="06_audit_logs_json.png" alt="WhatsApp Audit Log Form with Meta Live ribbon and JSON Request Payload inspector" style="max-width: 100%; border-radius: 4px;"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technical Specs -->
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan" style="color: #0f172a; font-weight: 700;">Technical Specifications &amp; Compatibility</h2>
+            <div class="table-responsive" style="margin-top: 16px;">
+                <table class="table table-bordered" style="background: #ffffff;">
+                    <tbody>
+                        <tr>
+                            <th style="width: 30%; background: #f8fafc;">Supported Odoo Version</th>
+                            <td>Odoo 19.0 (Community &amp; Enterprise Editions)</td>
+                        </tr>
+                        <tr>
+                            <th style="background: #f8fafc;">Core Dependencies</th>
+                            <td><code>base</code>, <code>mail</code>, <code>sale</code>, <code>account</code>, <code>stock</code></td>
+                        </tr>
+                        <tr>
+                            <th style="background: #f8fafc;">API Protocol</th>
+                            <td>Meta WhatsApp Cloud API (Graph API v19.0 &ndash; v23.0) + Official Media Upload</td>
+                        </tr>
+                        <tr>
+                            <th style="background: #f8fafc;">Security &amp; Access Control</th>
+                            <td>Odoo 19 <code>res.groups.privilege</code> Role-Based Access (User &amp; Administrator)</td>
+                        </tr>
+                        <tr>
+                            <th style="background: #f8fafc;">Scheduled Automation</th>
+                            <td>Automated Retry Queue (15-min interval) &amp; Daily Overdue Payment Reminder Cron</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Author / Get In Touch -->
+<section class="oe_container oe_dark" style="padding: 28px 0; border-radius: 8px;">
+    <div class="oe_row oe_spaced text-center">
+        <div class="oe_span12">
+            <h2 class="oe_slogan" style="color: #0f172a; font-weight: 700;">Need Custom Odoo Development or WhatsApp Automation?</h2>
+            <h3 class="oe_slogan" style="color: #475569;">
+                Developed by <strong>Harshul Patel</strong> &mdash; Odoo ERP Specialist &amp; Full Stack Developer (3+ Years Experience)
+            </h3>
+            <div class="oe_slogan" style="margin-top: 18px;">
+                <a class="btn btn-primary btn-lg m-1" href="mailto:harshulpatel2017@gmail.com">
+                    <i class="fa fa-envelope"></i> Email Me
+                </a>
+                <a class="btn btn-success btn-lg m-1" target="_blank" href="https://wa.me/917203857143">
+                    <i class="fa fa-whatsapp"></i> WhatsApp
+                </a>
+                <a class="btn btn-dark btn-lg m-1" target="_blank" href="https://harshul-patel-portfolio.vercel.app">
+                    <i class="fa fa-globe"></i> About Me
+                </a>
+                <a class="btn btn-info btn-lg m-1" target="_blank" href="https://www.linkedin.com/in/harshul-patel-94658a407">
+                    <i class="fa fa-linkedin"></i> LinkedIn Profile
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
